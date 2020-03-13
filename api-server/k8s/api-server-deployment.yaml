@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productivity-api-server-deployment
+  labels:
+    app: api-server
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-server
+  template:
+    metadata:
+      labels:
+        app: api-server
+    spec:
+      containers:
+      - name: api-server
+        image: volgenic/productivity-api-server
+        ports:
+        - containerPort: 8000
