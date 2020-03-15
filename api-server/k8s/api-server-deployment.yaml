@@ -4,7 +4,6 @@ metadata:
   name: productivity-api-server-deployment
   labels:
     app: api-server
-    tier: backend
 spec:
   replicas: 1
   selector:
@@ -17,6 +16,8 @@ spec:
     spec:
       containers:
       - name: api-server
-        image: volgenic/productivity-api-server
+        image: volgenic/productivity-api-server:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 8000
+          - containerPort: 80
+            protocol: TCP
